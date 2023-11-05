@@ -6,12 +6,15 @@ import {Header} from "./components/Header.jsx"
 import { Core } from './components/Core'
 import { Components } from './components/Components'
 import {TabButton} from './components/TabButton'
+import { EXAMPLES } from './components/data'
 
 function App() {
-
-  function handleClick(para)
+   var [state1,state2] = useState('components');
+  
+   function handleClick(para)
     {
         console.log(para);
+        state2(para);
     }
 
   const [count, setCount] = useState(0)
@@ -30,8 +33,9 @@ var description = arr[Math.floor(Math.random()*arr.length)];
 
       
       <h1>{description} React</h1>
-      <TabButton name="JSX" onSelect={() => handleClick('JSX')}></TabButton>
-      <TabButton name="Test" onSelect={() => handleClick('Test')}></TabButton>
+      <TabButton name="JSX" onSelect={() => handleClick('components')}></TabButton>
+      <TabButton name="Test" onSelect={() => handleClick('jsx')}></TabButton>
+      
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -40,7 +44,16 @@ var description = arr[Math.floor(Math.random()*arr.length)];
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      
+      <div>
+         <h3>{EXAMPLES[state1].title}</h3>
+         <p>{EXAMPLES[state1].description}</p>
+         <pre>
+          <code>{EXAMPLES[state1].code}</code>
+         </pre>
+
+
+
+      </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
